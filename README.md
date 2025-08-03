@@ -241,39 +241,6 @@ In development mode, the following files are mounted as volumes for live editing
 - **Development**: `docker-compose.yml` - includes volume mounts for live editing
 - **Production**: `docker-compose.prod.yml` - optimized builds with resource limits
 
-## Production Deployment
-
-For production deployment, consider:
-
-1. **Environment Variables**: Use proper secrets management instead of `.env` files
-2. **Reverse Proxy**: Place behind nginx or similar for SSL termination
-3. **Resource Limits**: Set appropriate CPU and memory limits in docker-compose.yml
-4. **Logging**: Configure proper log aggregation
-5. **Monitoring**: Add health check endpoints for monitoring systems
-
-### Example Production Docker Compose
-```yaml
-version: '3.8'
-services:
-  api:
-    build: .
-    ports:
-      - "8000:8000"
-    environment:
-      - GEMINI_API_KEY=${GEMINI_API_KEY}
-    restart: always
-    deploy:
-      resources:
-        limits:
-          cpus: '1.0'
-          memory: 512M
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-```
-
 ## Troubleshooting
 
 ### Common Issues
