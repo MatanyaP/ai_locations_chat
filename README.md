@@ -15,7 +15,7 @@
 
 ### 1. Clone and Setup
 ```bash
-git clone <repository-url>
+git clone https://github.com/MatanyaP/ai_locations_chat
 cd locations_chat
 ```
 
